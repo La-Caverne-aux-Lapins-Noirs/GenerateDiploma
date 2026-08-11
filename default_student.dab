@@ -1,0 +1,25 @@
+[Diploma
+  Output = "student.png"
+
+  [Promotion
+    Year = 2030
+  ]
+
+  [Recipient
+    Promo = 2030
+    Number = 1
+    Codename = "prenom.nom"
+    Name = "Prénom NOM"
+    Alias = "pseudo"
+    BirthText = "Né(e) le 1er janvier 2000 à Ville"
+  ]
+
+  {Signatories
+    [
+      Label = "Le titulaire"
+      Name = "Prénom NOM"
+      Title = ""
+      Signature = ""
+    ]
+  }
+]

@@ -1,0 +1,132 @@
+[Diploma
+  Width = 3508
+  Height = 2480
+  SuperSampling = 2
+  Background = "#101419"
+  Output = "default.png"
+
+  [Botanical
+    Enabled = false
+    Color = "#C8D6E080"
+    Margin = 170
+    MinScale = 240
+    MaxScale = 420
+    MinDepth = 3
+    MaxDepth = 4
+    MinThickness = 1
+    MaxThickness = 2
+  ]
+
+  [Border
+    Color = "#C8D6E0"
+    Margin = 150
+    MinHorizontalLength = 380
+    MaxHorizontalLength = [].Diploma.Width / 4
+    MinVerticalLength = 200
+    MaxVerticalLength = [].Diploma.Height / 4
+    MinThickness = 1
+    MaxThickness = 2
+    MinLines = 1
+    MaxLines = 2
+    LineSpacing = 12
+    GlowMinStyle = 0
+    GlowMaxStyle = 2
+  ]
+
+  [Logo
+    Path = "res/placeholder_logo.png"
+  ]
+
+  [Font
+    Path = "res/font_diplome.dab"
+  ]
+
+  [Promotion
+    Year = 2030
+    Font = "res/diploma_promotion_text.dab"
+  ]
+
+  [School
+    Name = "INSTITUT EXEMPLE DES TECHNOLOGIES NUMÉRIQUES"
+    NameFont = "res/diploma_school_name_text.dab"
+    Characterization = "Établissement d'enseignement supérieur"
+  ]
+
+  [Recommendation
+    Font = "res/diploma_recommendation_text.dab"
+    Text = "Sur proposition de l'équipe pédagogique et après validation des instances de l'établissement"
+  ]
+
+  [Recipient
+    Promo = 2030
+    Number = 1
+    Codename = "prenom.nom"
+    Name = "Prénom NOM"
+    NameFont = "res/diploma_recipient_name_text.dab"
+    Alias = "pseudo"
+    AliasFont = "res/diploma_recipient_alias_text.dab"
+    BirthText = "Né(e) le 1er janvier 2000 à Ville"
+    BirthFont = "res/diploma_recipient_birth_text.dab"
+  ]
+
+  [Attribution
+    Font = "res/diploma_attribution_text.dab"
+    Text = "se voit attribuer le"
+  ]
+
+  [Text
+    Main = "Diplôme d'études\nen technologies numériques"
+    Color = "#FFFFFFE6"
+  ]
+
+  [Certification
+    Font = "res/diploma_certification_text.dab"
+    Text = "Diplôme d'établissement délivré par l'Institut Exemple des Technologies Numériques. Ce document atteste la validation d'un parcours de formation et des compétences associées selon le règlement pédagogique de l'établissement."
+  ]
+
+  [Seal
+    Path = ""
+  ]
+
+  [SignatoryFonts
+    LabelFont = "res/diploma_signatory_label_text.dab"
+    NameFont = "res/diploma_signatory_name_text.dab"
+    TitleFont = "res/diploma_signatory_title_text.dab"
+  ]
+
+  {Signatories
+    [
+      Label = "Le titulaire"
+      Name = "Prénom NOM"
+      Title = ""
+      Signature = ""
+    ],
+    [
+      Label = ""
+      Name = "Prénom NOM"
+      Title = "Directeur général"
+      Signature = ""
+    ],
+    [
+      Label = ""
+      Name = "Prénom NOM"
+      Title = "Président du jury"
+      Signature = ""
+    ],
+    [
+      Label = ""
+      Name = "Prénom NOM"
+      Title = "Président"
+      Signature = ""
+    ]
+  }
+
+  [Footer
+    [DiplomaNumber
+      Font = "res/diploma_number_text.dab"
+    ]
+    [SchoolPhrase
+      Font = "res/diploma_school_phrase_text.dab"
+    ]
+  ]
+]

@@ -1,0 +1,16 @@
+Format: https://www.debian.org/doc/packaging-manuals/copyright-format/1.0/
+Upstream-Name: GenDiplome
+Source: https://github.com/La-Caverne-aux-Lapins-Noirs/GenerateDiplomA
+
+Files: *
+Copyright: 2014-2026 Jason Brillante "Damdoshi", Hanged Bunny Studio
+           2022-2026 EFRITS SAS
+           2008-2026 Pentacle Technologie
+License: AGPL-3+
+ This program is free software: you can redistribute it and/or modify
+ it under the terms of the GNU General Public License as published by
+ the Free Software Foundation, either version 3 of the License, or
+ (at your option) any later version.
+ .
+ On Debian systems, the complete text of the GNU Affero General Public License
+ version 3 can be found in /usr/share/common-licenses/AGPL-3.

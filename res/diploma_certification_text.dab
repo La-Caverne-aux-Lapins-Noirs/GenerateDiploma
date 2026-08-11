@@ -1,0 +1,10 @@
+RessourceFile = "res/arial.ttf"
+BoxSize = 5470, 445
+GlyphSize = 54
+HorizontalAlign = "Middle"
+VerticalAlign = "Middle"
+Color = 255, 255, 255, 230
+OutlineColor = 24, 24, 24, 190
+OutlineSize = 2
+Interglyph = 1, 0
+String = ""

@@ -1,0 +1,10 @@
+RessourceFile = "res/font_diplome.ttf"
+BoxSize = 5612, 992
+GlyphSize = 210
+HorizontalAlign = "Middle"
+VerticalAlign = "Middle"
+Color = 255, 255, 255, 230
+OutlineColor = 24, 24, 24, 190
+OutlineSize = 6
+Interglyph = 4, 0
+String = ""

@@ -1,0 +1,18 @@
+#!/usr/bin/make -f
+
+export DEB_BUILD_MAINT_OPTIONS = hardening=+all
+
+%:
+	dh $@
+
+override_dh_auto_build:
+	dh_auto_build -- PREFIX=/usr DATADIR=/usr/share/gendiploma LIBPATH=
+
+override_dh_auto_install:
+	dh_auto_install -- PREFIX=/usr DATADIR=/usr/share/gendiploma LIBPATH=
+	install -d debian/gendiploma/usr/share/gendiploma
+	install -m 0644 res/arial.ttf res/font_diplome.ttf debian/gendiploma/usr/share/gendiploma/
+	for f in res/diploma_*.dab res/font_diplome.dab; do \
+	  sed 's#RessourceFile = "res/#RessourceFile = "/usr/share/gendiploma/#' "$$f" \
+	    > "debian/gendiploma/usr/share/gendiploma/$$(basename "$$f")"; \
+	done

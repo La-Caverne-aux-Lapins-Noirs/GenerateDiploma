@@ -1,0 +1,15 @@
+Source: gendiploma
+Section: graphics
+Priority: optional
+Maintainer: EFRITS Technocentre <root@localhost>
+Build-Depends: debhelper-compat (= 13), liblapin-dev, libsfml-dev, libffcall-dev
+Standards-Version: 4.6.2
+Rules-Requires-Root: no
+Homepage: https://github.com/La-Caverne-aux-Lapins-Noirs/GenDiplome
+
+Package: gendiploma
+Architecture: any
+Depends: ${shlibs:Depends}, ${misc:Depends}
+Description: procedural diploma image generator
+ GenDiplome generates diploma PNG images from Dabsic configuration files.
+ It uses LibLapin for configuration parsing, font rendering and image output.
