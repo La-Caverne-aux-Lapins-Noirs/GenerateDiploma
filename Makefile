@@ -7,6 +7,7 @@
 ## ----------------------------------------------------------------------------
 ## Configuration --------------------------------------------------------------
 
+  CC		=	bcc
   MOD		=	gendiploma
   BIN		=	gendiploma
   CFLAGS	?=	-O2 -g
@@ -20,9 +21,6 @@
   DESTDIR	?=
   SRC		=	$(wildcard src/*.c)
   OBJ		=	$(SRC:.c=.o)
-  LIBPATH	=	-L${HOME}/.froot/lib/
-  LIB		=	-llapin -lsfml-graphics -lsfml-audio -lsfml-window	\
-			-lsfml-system -lstdc++ -lm -ldl -lpthread -lavcall
 
   ## Rules ------------------------------------------------------------------
   all:		bin

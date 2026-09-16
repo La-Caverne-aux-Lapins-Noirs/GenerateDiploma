@@ -343,7 +343,8 @@ static void		render_rounded_box(t_bunny_pixelarray *pix,
 		   double box_h,
 		   double radius,
 		   double border,
-		   unsigned int border_color)
+		   unsigned int border_color,
+		   unsigned int background_color)
 {
   int			x;
   int			y;
@@ -355,12 +356,12 @@ static void		render_rounded_box(t_bunny_pixelarray *pix,
   int			inner;
   double		t;
   double		fade;
-  unsigned char	alpha;
-  t_bunny_color	fill_color;
-  t_bunny_color	line_color;
+  t_bunny_color		fill_color;
+  t_bunny_color		line_color;
 
   if (pix == NULL || box_w <= 0.0 || box_h <= 0.0)
     return;
+  (void)background_color;
   iw = (int)ceil(box_w);
   ih = (int)ceil(box_h);
   line_color.full = border_color;
@@ -381,20 +382,11 @@ static void		render_rounded_box(t_bunny_pixelarray *pix,
       t = (ih <= 1 ? 0.0 : (double)y / (double)(ih - 1));
       if (inner)
 	{
-	  if (t <= 0.40)
-	    fade = 1.0;
-	  else
-	    {
-	      fade = 1.0 - (t - 0.40) / 0.60;
-	      if (fade < 0.0)
-		fade = 0.0;
-	    }
-	  alpha = (unsigned char)(179.0 * fade + 0.5);
 	  fill_color.full = 0;
 	  fill_color.argb[RED_CMP] = 255;
 	  fill_color.argb[GREEN_CMP] = 255;
 	  fill_color.argb[BLUE_CMP] = 255;
-	  fill_color.argb[ALPHA_CMP] = alpha;
+	  fill_color.argb[ALPHA_CMP] = 255;
 	  put_pixel_alpha(pix, (int)box_x + x, (int)box_y + y,
 			  fill_color.full, 1.0);
 	}
@@ -710,6 +702,7 @@ static void		render_signatories(t_bunny_pixelarray *pix,
   double		radius;
   double		border;
   const char		*name;
+  const char		*label;
   unsigned int	black;
   int		i;
 
@@ -735,18 +728,21 @@ static void		render_signatories(t_bunny_pixelarray *pix,
     if (border < 2.0)
       border = 2.0;
     render_rounded_box(pix, block_x, block_y, block_w, block_h,
-		       radius, border, style->border_color);
+		       radius, border, style->border_color,
+		       style->background_color);
     pad_x = block_w * 0.06;
+    label = style->signatories[i].label;
+    if (signatory_is_titulaire(label))
+      label = "Titulaire";
     name = style->signatories[i].name;
     if ((name == NULL || name[0] == '\0') && style->recipient_name != NULL
 	&& style->recipient_name[0] != '\0'
 	&& signatory_is_titulaire(style->signatories[i].label))
       name = style->recipient_name;
-    if (style->signatories[i].label != NULL
-	&& style->signatories[i].label[0] != '\0')
+    if (label != NULL && label[0] != '\0')
       {
 	render_textbox_colored(pix, style->signatory_label_font_path,
-			       style->signatories[i].label,
+			       label,
 			       block_x + pad_x, block_y + block_h * 0.06,
 			       block_w - pad_x * 2.0, block_h * 0.12,
 			       BAL_MIDDLE, BAL_TOP, black);

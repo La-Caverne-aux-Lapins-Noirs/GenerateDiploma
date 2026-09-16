@@ -10,13 +10,14 @@
     Number = 1
     Codename = "prenom.nom"
     Name = "Prénom NOM"
+    Gender = "male"
     Alias = "pseudo"
     BirthText = "Né(e) le 1er janvier 2000 à Ville"
   ]
 
   {Signatories
     [
-      Label = "Le titulaire"
+      Label = "Titulaire"
       Name = "Prénom NOM"
       Title = ""
       Signature = ""

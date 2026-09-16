@@ -175,6 +175,49 @@ static int		load_recipient_number(t_bunny_configuration *config)
   return (number);
 }
 
+static const char	*load_recipient_gender(t_bunny_configuration *config)
+{
+  const char		*gender;
+
+  gender = "";
+  if (conf_get_string(config, &gender, "Diploma.Recipient.Gender"))
+    return (gender);
+  if (conf_get_string(config, &gender, "Recipient.Gender"))
+    return (gender);
+  if (conf_get_string(config, &gender, "Student.Gender"))
+    return (gender);
+  return ("");
+}
+
+static void		gender_recipient_birth_text(t_bunny_configuration *config,
+				    t_diploma_style *style)
+{
+  const char		*gender;
+  const char		*marker;
+  const char		*replacement;
+  size_t		prefix_len;
+
+  if (style->recipient_birth_text == NULL)
+    return ;
+  gender = load_recipient_gender(config);
+  replacement = NULL;
+  if (strcmp(gender, "female") == 0)
+    replacement = "Née";
+  else if (strcmp(gender, "male") == 0)
+    replacement = "Né";
+  if (replacement == NULL)
+    return ;
+  marker = strstr(style->recipient_birth_text, "Né(e)");
+  if (marker == NULL)
+    return ;
+  prefix_len = (size_t)(marker - style->recipient_birth_text);
+  snprintf(style->recipient_birth_text_gendered,
+           sizeof(style->recipient_birth_text_gendered),
+           "%.*s%s%s", (int)prefix_len, style->recipient_birth_text,
+           replacement, marker + strlen("Né(e)"));
+  style->recipient_birth_text = style->recipient_birth_text_gendered;
+}
+
 static void		make_diploma_key(t_bunny_configuration *config,
 			 t_diploma_style *style,
 			 const char *secret)
@@ -372,6 +415,7 @@ void			diploma_style_from_configuration(t_bunny_configuration *config,
   style->recipient_alias = "";
   style->recipient_birth_font_path = GENDIPLOMA_RESOURCE("diploma_recipient_birth_text.dab");
   style->recipient_birth_text = "";
+  style->recipient_birth_text_gendered[0] = '\0';
   style->attribution_font_path = GENDIPLOMA_RESOURCE("diploma_attribution_text.dab");
   style->attribution_text = "";
   style->certification_font_path = GENDIPLOMA_RESOURCE("diploma_certification_text.dab");
@@ -483,6 +527,7 @@ void			diploma_style_from_configuration(t_bunny_configuration *config,
 		  "Diploma.Recipient.BirthText");
   conf_get_string(config, &style->recipient_birth_text,
 		  "Student.BirthText");
+  gender_recipient_birth_text(config, style);
   conf_get_string(config, &style->attribution_font_path,
 		  "Diploma.Attribution.Font");
   conf_get_string(config, &style->attribution_text,

@@ -83,6 +83,7 @@ typedef struct		s_diploma_style
   const char		*recipient_alias;
   const char		*recipient_birth_font_path;
   const char		*recipient_birth_text;
+  char			recipient_birth_text_gendered[512];
   const char		*attribution_font_path;
   const char		*attribution_text;
   const char		*certification_font_path;

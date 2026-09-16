@@ -79,7 +79,7 @@ Les champs les plus naturels à placer dans un overlay étudiant sont :
 - `Diploma.Recipient.Name`
 - `Diploma.Recipient.Alias`
 - `Diploma.Recipient.BirthText`
-- le premier bloc de `Diploma.Signatories` pour adapter `Le titulaire` / `La titulaire` et le nom affiché.
+- le premier bloc de `Diploma.Signatories` pour adapter le bloc `Titulaire` et le nom affiché.
 
 ---
 
@@ -238,6 +238,7 @@ Exemple :
 | Champ | Type | Rôle |
 |---|---:|---|
 | `Name` | chaîne | nom civil affiché |
+| `Gender` | chaîne | genre (`female`, `male`, `other`) ; accorde automatiquement `Né(e)` dans `BirthText` |
 | `NameFont` | chaîne | `.dab` du nom |
 | `Alias` | chaîne | pseudo optionnel affiché sous le nom |
 | `AliasFont` | chaîne | `.dab` du pseudo |
@@ -247,7 +248,7 @@ Exemple :
 | `Number` / `Id` / `ID` | entier | numéro étudiant |
 | `Codename` | chaîne | codename de l'étudiant, utilisé pour la génération procédurale |
 
-Le moteur accepte aussi certaines clés `Student.*` comme alias de lecture (`Student.Name`, `Student.Promo`, `Student.Id`, `Student.Codename`, etc.).
+Le moteur accepte aussi certaines clés `Student.*` comme alias de lecture (`Student.Name`, `Student.Gender`, `Student.Promo`, `Student.Id`, `Student.Codename`, etc.). Pour `BirthText`, `female` remplace `Né(e)` par `Née`, `male` par `Né`, et toute autre valeur conserve la forme neutre fournie.
 
 ### Numéro du diplôme
 
@@ -284,7 +285,7 @@ Les signataires sont fournis sous forme de tableau Dabsic :
 ```dabsic
 {Signatories
   [
-    Label = "Le titulaire"
+    Label = "Titulaire"
     Name = "Prénom NOM"
     Title = ""
     Signature = ""
